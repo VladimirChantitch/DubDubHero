@@ -8,6 +8,7 @@ namespace Track
     public class TrackManager : MonoBehaviour
     {
         [SerializeField] private FloorHandler floorHandler;
+        [SerializeField] private TrackLoader loader;
         /// <summary>
         /// Track speed in meter per second
         /// </summary>
@@ -21,16 +22,10 @@ namespace Track
         {
             if (floorHandler == null) floorHandler = GetComponent<FloorHandler>();
         }
-        // Start is called before the first frame update
+
         void Start()
         {
             transform.DOMove(Vector3.forward * trackLength, trackLength / trackSpeed);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }
