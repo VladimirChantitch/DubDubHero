@@ -1,4 +1,5 @@
 using DG.Tweening;
+using loader;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace Track
     public class TrackManager : MonoBehaviour
     {
         [SerializeField] private FloorHandler floorHandler;
-        [SerializeField] private TrackLoader loader;
+        [SerializeField] private Loader loader;
         /// <summary>
         /// Track speed in meter per second
         /// </summary>
