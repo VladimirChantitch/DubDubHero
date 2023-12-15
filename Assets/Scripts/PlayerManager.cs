@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] float speed = 2f;
-    [SerializeField] float maxSpeed = 5f;
     [SerializeField] InputManager inputManager;
 
     private void Awake()

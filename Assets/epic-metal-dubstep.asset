@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: epic-metal-dubstep
   m_EditorClassIdentifier: 
   resourceName: epic-metal-dubstep
-  spriteName: {fileID: 21300000, guid: 70bc3cd5befd0ee4cbaef54248605544, type: 3}
+  sprite: {fileID: 21300000, guid: 70bc3cd5befd0ee4cbaef54248605544, type: 3}
