@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using ui.credits;
 using ui.home;
+using ui.selectLevel;
 using ui.settings;
 using ui.tutorial;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace ui
         [SerializeField] Tutorial_Presenter tutorialPresenter;
         [SerializeField] Settings_Presenter settingsPresenter;
         [SerializeField] Credits_Presenter credits_Presenter;
+        [SerializeField] SelectLevel_Presenter selectLevelPresenter;
 
         private void Start()
         {
@@ -34,11 +36,15 @@ namespace ui
             tutorialPresenter.gameObject.SetActive(false);
             settingsPresenter.gameObject.SetActive(false);
             credits_Presenter.gameObject.SetActive(false);
+            selectLevelPresenter.gameObject.SetActive(false);
         }
 
         private void BindHomePresenter()
         {
-            homePresenter.OnStartButtonClicked += () => { };
+            homePresenter.OnStartButtonClicked += () => {
+                homePresenter.gameObject.SetActive(false);
+                selectLevelPresenter.gameObject.SetActive(true);
+            };
             homePresenter.OnTutorialButtonClicked += () => {
                 homePresenter.gameObject.SetActive(false);
                 tutorialPresenter.gameObject.SetActive(true);
@@ -69,6 +75,12 @@ namespace ui
             {
                 homePresenter.gameObject.SetActive(true);
                 credits_Presenter.gameObject.SetActive(false);
+            };
+
+            selectLevelPresenter.OnBackPressed += () =>
+            {
+                homePresenter.gameObject.SetActive(true);
+                selectLevelPresenter.gameObject.SetActive(false);
             };
         }
 

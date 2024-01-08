@@ -9,6 +9,13 @@ namespace loader
     public class Loader : MonoBehaviour
     {
         [SerializeField] List<LoaderData> datas = new List<LoaderData>();
+        public List<LoaderData> Datas { 
+            get {
+                List<LoaderData> a = new List<LoaderData>();
+                a.AddRange(datas);
+                return a;
+            } 
+        }
 
         private void Start()
         {
