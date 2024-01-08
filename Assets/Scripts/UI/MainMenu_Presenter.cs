@@ -21,10 +21,6 @@ namespace ui
 
         private void Start()
         {
-            sceneManager.OnSceneLoadingStarted += HandleSceneLoading;
-            sceneManager.OnSceneProgress += HandleSceneProgress;
-            sceneManager.OnSceneLoaded += HandleSceneLoaded;
-
             BindHomePresenter();
             BindTutorialPresenter();
             InitUI();
@@ -83,21 +79,5 @@ namespace ui
                 selectLevelPresenter.gameObject.SetActive(false);
             };
         }
-
-        private void HandleSceneLoading(object sender, EventArgs e)
-        {
-
-        }
-
-        private void HandleSceneProgress(object sender, float e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void HandleSceneLoaded(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
     }
-
 }

@@ -1,4 +1,6 @@
+using data;
 using loader;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +12,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public SceneManager sceneManager;
     [SerializeField] Loader loader;
+    [SerializeField] string PlaySceneToLoad;
+
+    SongData selectedSongData;
 
     private void Awake()
     {
@@ -30,5 +35,16 @@ public class GameManager : MonoBehaviour
     public List<LoaderData> GetSongsData()
     {
         return loader.Datas;
+    }
+
+    public void GetSongByIDAndRun(int id)
+    {
+        selectedSongData = loader.GetSongById(id);
+        sceneManager.LoadScene(PlaySceneToLoad);
+    }
+
+    public SongData GetSelectedSongData()
+    {
+        return selectedSongData;
     }
 }
