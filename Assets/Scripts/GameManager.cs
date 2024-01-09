@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public SceneManager sceneManager;
     [SerializeField] Loader loader;
     [SerializeField] string PlaySceneToLoad;
+    [SerializeField] string uiToLoad;
 
     SongData selectedSongData;
 
@@ -40,7 +41,8 @@ public class GameManager : MonoBehaviour
     public void GetSongByIDAndRun(int id)
     {
         selectedSongData = loader.GetSongById(id);
-        sceneManager.LoadScene(PlaySceneToLoad);
+        sceneManager.LoadScene(uiToLoad);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(PlaySceneToLoad, UnityEngine.SceneManagement.LoadSceneMode.Additive);
     }
 
     public SongData GetSelectedSongData()

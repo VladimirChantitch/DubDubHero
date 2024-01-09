@@ -138,3 +138,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneManager: {fileID: 0}
   loader: {fileID: 0}
+  PlaySceneToLoad: GameScene
+  uiToLoad: InGame_UI
