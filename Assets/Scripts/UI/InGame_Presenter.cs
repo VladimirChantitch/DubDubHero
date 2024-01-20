@@ -11,12 +11,26 @@ using UnityEngine;
 
 namespace ui.ingame
 {
-    public class InGame_Presenter : MonoBehaviour
+    public class InGame_Presenter : MonoBehaviour, IMainPresenter
     {
         [SerializeField] SceneManager sceneManager;
         [SerializeField] Settings_Presenter settings_Presenter;
         [SerializeField] MainIngame_Presenter mainIngamePresenter;
         [SerializeField] PauseMenu_Presenter pauseMenuPresenter;
+
+        private static InGame_Presenter instance;
+        public static InGame_Presenter Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+        private void Awake()
+        {
+            instance = this;
+        }
 
         private void Start()
         {
@@ -50,6 +64,11 @@ namespace ui.ingame
                 pauseMenuPresenter.gameObject.SetActive(false);
                 mainIngamePresenter.gameObject.SetActive(true);
             };
+        }
+
+        public Settings_Presenter GetSettings_Presenter()
+        {
+            return settings_Presenter;
         }
     }
 }

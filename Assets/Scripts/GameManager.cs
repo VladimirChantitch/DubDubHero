@@ -1,3 +1,4 @@
+using audio;
 using data;
 using loader;
 using System;
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Loader loader;
     [SerializeField] string PlaySceneToLoad;
     [SerializeField] string uiToLoad;
+    [SerializeField] AudioManager audioManager;
 
     SongData selectedSongData;
 
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
 
         sceneManager = GetComponentInChildren<SceneManager>();
         loader = GetComponentInChildren<Loader>();
+        audioManager = GetComponentInChildren<AudioManager>();
     }
 
     public List<LoaderData> GetSongsData()
@@ -43,6 +46,7 @@ public class GameManager : MonoBehaviour
         selectedSongData = loader.GetSongById(id);
         sceneManager.LoadScene(uiToLoad);
         UnityEngine.SceneManagement.SceneManager.LoadScene(PlaySceneToLoad, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        audioManager.LookForAudioSettings();
     }
 
     public SongData GetSelectedSongData()
