@@ -40,18 +40,13 @@ namespace loader
             return songData;
         }
 
+        
         public SongMapData ParseSongMap()
         {
             var arrays = ParseCsv(selectedSong.songMap.text);
 
-            float[] tambourArray = arrays.Item1;
-            float[] cymbalArray = arrays.Item2;
-            float[] pocpocArray = arrays.Item3;
+            SongMapData songMapData = new SongMapData(arrays.Item1, arrays.Item2, arrays.Item3);
 
-            foreach (var item in tambourArray)
-            {
-                Debug.Log(item);
-            }
             return null;
         }
 
@@ -66,13 +61,12 @@ namespace loader
             foreach (var line in lines.Skip(1)) 
             {
                 string[] values = line.Split("\",\"");
-                Debug.Log(values.Length);
 
                 float tambourValue, cymbalValue, pocpocValue;
 
-                if (float.TryParse(values[0].Trim('"'), NumberStyles.Float, CultureInfo.InvariantCulture, out tambourValue) &&
-                    float.TryParse(values[1].Trim('"'), NumberStyles.Float, CultureInfo.InvariantCulture, out cymbalValue) &&
-                    float.TryParse(values[2].Trim('"'), NumberStyles.Float, CultureInfo.InvariantCulture, out pocpocValue))
+                if (float.TryParse(values[0].Trim('"'), out tambourValue) &&
+                    float.TryParse(values[1].Trim('"'), out cymbalValue) &&
+                    float.TryParse(values[2].Trim('"'), out pocpocValue))
                 {
                     tambourList.Add(tambourValue);
                     cymbalList.Add(cymbalValue);
