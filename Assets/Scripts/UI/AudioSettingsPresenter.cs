@@ -40,8 +40,16 @@ namespace ui.settings
                 uiValue = uiSlider.value,
             };
         }
-    }
 
+        internal void InitUI(AudioData audioData)
+        {
+            mainAudioSlider.value = audioData.mainValue;
+            vfxSlider.value = audioData.vfxValue;
+            musicSlider.value = audioData.musicValue;
+            uiSlider.value = audioData.uiValue;
+        }
+    }
+    
     public class AudioData
     {
         public float mainValue = 0;

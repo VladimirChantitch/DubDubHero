@@ -14,6 +14,11 @@ namespace ui.settings
         public event Action OnBackPressed;
         public event Action<AudioData> OnAudioChanged;
 
+        internal void InitUI(AudioData audioData)
+        {
+            audioSettings.InitUI(audioData);
+        }
+
         private void Awake()
         {
             audioSettings.OnAudioSettingsChanged += (audioSettings) =>

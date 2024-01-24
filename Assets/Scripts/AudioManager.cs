@@ -21,6 +21,23 @@ namespace audio
         private void Start()
         {
             LookForAudioSettings();
+            float master = PlayerPrefs.GetFloat(MASTER_VOLUME);
+            float music = PlayerPrefs.GetFloat(MUSIC_VOLUME);
+            float sfx = PlayerPrefs.GetFloat(SFX_VOLUME);
+            float ui = PlayerPrefs.GetFloat(UI_VOLUME);
+
+            mixer.SetFloat(MASTER_VOLUME, PlayerPrefs.GetFloat(MASTER_VOLUME));
+            mixer.SetFloat(MUSIC_VOLUME, PlayerPrefs.GetFloat(MUSIC_VOLUME));
+            mixer.SetFloat(SFX_VOLUME, PlayerPrefs.GetFloat(SFX_VOLUME));
+            mixer.SetFloat(UI_VOLUME, PlayerPrefs.GetFloat(UI_VOLUME));
+
+            settingsPresenter.InitUI(new AudioData()
+            {
+                mainValue = master,
+                vfxValue = sfx,
+                uiValue = ui,
+                musicValue = music,
+            });
         }
 
         public void LookForAudioSettings()
@@ -35,6 +52,11 @@ namespace audio
                     mixer.SetFloat(MUSIC_VOLUME, audioData.musicValue);
                     mixer.SetFloat(SFX_VOLUME, audioData.vfxValue);
                     mixer.SetFloat(UI_VOLUME, audioData.uiValue);
+
+                    PlayerPrefs.SetFloat(MASTER_VOLUME, audioData.mainValue);
+                    PlayerPrefs.SetFloat(MUSIC_VOLUME, audioData.musicValue);
+                    PlayerPrefs.SetFloat(SFX_VOLUME, audioData.vfxValue);
+                    PlayerPrefs.SetFloat(UI_VOLUME, audioData.uiValue);
                 };
             }
         }
