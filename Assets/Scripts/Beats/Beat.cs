@@ -25,7 +25,8 @@ namespace gameplay
 
             beatGraphism.enabled = false;
             _collider.enabled = false;
-            if (state == E_BeatState.Perfect || state == E_BeatState.Good)  HandleParticules();
+            //if (state == E_BeatState.Perfect || state == E_BeatState.Good)  
+                HandleParticules();
             return GetScore();
         }
 
