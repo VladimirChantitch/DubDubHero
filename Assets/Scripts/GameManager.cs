@@ -1,3 +1,4 @@
+using data;
 using loader;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,5 +31,10 @@ public class GameManager : MonoBehaviour
     public List<LoaderData> GetSongsData()
     {
         return loader.Datas;
+    }
+
+    public SongData GetSong(int id)
+    {
+        return loader.GetSongById(id);
     }
 }
