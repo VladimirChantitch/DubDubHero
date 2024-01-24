@@ -1707,6 +1707,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beat right
       objectReference: {fileID: 0}
+    - target: {fileID: 8443900360590508730, guid: 4f221ef045034af498064ed2f0785bc7, type: 3}
+      propertyPath: state
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9074428767476320448, guid: 4f221ef045034af498064ed2f0785bc7, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.b
       value: 0.14376624
@@ -2066,6 +2070,10 @@ PrefabInstance:
     - target: {fileID: 7038081211886018149, guid: 55fa243623cf3ff47b47d53f360c72ca, type: 3}
       propertyPath: m_Name
       value: Beat left
+      objectReference: {fileID: 0}
+    - target: {fileID: 8443900360590508730, guid: 55fa243623cf3ff47b47d53f360c72ca, type: 3}
+      propertyPath: state
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5001,6 +5009,10 @@ PrefabInstance:
     - target: {fileID: 7038081211886018149, guid: a8c522caf45d3c448afddf4c6db46b8d, type: 3}
       propertyPath: m_Name
       value: Beat center
+      objectReference: {fileID: 0}
+    - target: {fileID: 8443900360590508730, guid: a8c522caf45d3c448afddf4c6db46b8d, type: 3}
+      propertyPath: state
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9074428767476320448, guid: a8c522caf45d3c448afddf4c6db46b8d, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.ctime1
