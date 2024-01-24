@@ -58,6 +58,11 @@ public class GameManager : MonoBehaviour
         return loader.Datas;
     }
 
+    public SongData GetSong(int id)
+    {
+        return loader.GetSongById(id);
+    }
+
     public void GetSongByIDAndRun(int id)
     {
         selectedSongData = loader.GetSongById(id);

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 594f88b549bae0847a73f717d5571487
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - BeatRight: {fileID: 7038081211886018149, guid: 4f221ef045034af498064ed2f0785bc7, type: 3}
+  - BeatCenter: {fileID: 7038081211886018149, guid: a8c522caf45d3c448afddf4c6db46b8d, type: 3}
+  - BeatLeft: {fileID: 7038081211886018149, guid: 55fa243623cf3ff47b47d53f360c72ca, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
