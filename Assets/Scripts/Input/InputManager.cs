@@ -1,3 +1,4 @@
+using gameplay;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("found " + hit.collider.gameObject.name + " at distance: " + hit.distance);
             Beat beat = hit.collider.gameObject.GetComponent<Beat>();
-            Debug.Log(beat.HitTheBeatAndGetScore());
+
             OnTouch?.Invoke(beat);
         }
     }

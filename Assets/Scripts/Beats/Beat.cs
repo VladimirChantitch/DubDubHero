@@ -4,58 +4,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Beat : MonoBehaviour
+namespace gameplay
 {
-    [SerializeField] ParticleSystem particuleSystem;
-    [SerializeField] Renderer beatGraphism;
-
-    [SerializeField] E_BeatState state;
-    [SerializeField] Collider _collider;
-
-    private void Awake()
+    public class Beat : MonoBehaviour
     {
-        particuleSystem.Pause();
-    }
+        [SerializeField] ParticleSystem particuleSystem;
+        [SerializeField] Renderer beatGraphism;
 
-    public float HitTheBeatAndGetScore()
-    {
-        if (state == E_BeatState.Nope) return 0;
+        [SerializeField] E_BeatState state;
+        [SerializeField] Collider _collider;
 
-        beatGraphism.enabled = false;
-        _collider.enabled = false;
-        HandleParticules();
-        return GetScore();
-    }
-
-    public void SetState(E_BeatState state)
-    {
-        this.state = state;
-    }
-
-    private void HandleParticules()
-    {
-        particuleSystem.Play();
-    }
-
-    private float GetScore()
-    {
-        float score = 0;
-
-        switch (state)
+        private void Awake()
         {
-            case E_BeatState.Bad:
-                score = 10;
-                break;
-            case E_BeatState.Good:
-                score = 25;
-                break;
-            case E_BeatState.Perfect:
-                score = 50;
-                break;
+            particuleSystem.Pause();
         }
 
-        return score;
+        public float HitTheBeatAndGetScore()
+        {
+            if (state == E_BeatState.Nope) return 0;
+
+            beatGraphism.enabled = false;
+            _collider.enabled = false;
+            HandleParticules();
+            return GetScore();
+        }
+
+        public void SetState(E_BeatState state)
+        {
+            this.state = state;
+        }
+
+        private void HandleParticules()
+        {
+            particuleSystem.Play();
+        }
+
+        private float GetScore()
+        {
+            float score = 0;
+
+            switch (state)
+            {
+                case E_BeatState.Bad:
+                    score = 10;
+                    break;
+                case E_BeatState.Good:
+                    score = 25;
+                    break;
+                case E_BeatState.Perfect:
+                    score = 50;
+                    break;
+            }
+
+            return score;
+        }
     }
 }
-
-public enum E_BeatState { Nope, Bad, Good, Perfect}

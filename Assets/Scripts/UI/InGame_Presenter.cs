@@ -70,6 +70,11 @@ namespace ui.ingame
         {
             return settings_Presenter;
         }
+
+        internal void SetScore(float currentScore)
+        {
+            mainIngamePresenter.SetScore(currentScore);
+        }
     }
 }
 

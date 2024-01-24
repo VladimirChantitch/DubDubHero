@@ -205,4 +205,4 @@ MonoBehaviour:
   beatMask:
     serializedVersion: 2
     m_Bits: 1024
-  maxDistance: 0
+  maxDistance: 15

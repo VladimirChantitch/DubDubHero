@@ -18,6 +18,11 @@ namespace ui.ingame
         {
             pauseButton.onClick.AddListener(() => { OnPauseButtonClicked?.Invoke(); });
         }
+
+        public void SetScore(float score)
+        {
+            this.score.text = score.ToString();
+        }
     }
 }
 
