@@ -189,6 +189,7 @@ MonoBehaviour:
   PlaySceneToLoad: GameScene
   uiToLoad: InGame_UI
   audioManager: {fileID: 0}
+  inputManager: {fileID: 0}
 --- !u!114 &6930062236517930023
 MonoBehaviour:
   m_ObjectHideFlags: 0

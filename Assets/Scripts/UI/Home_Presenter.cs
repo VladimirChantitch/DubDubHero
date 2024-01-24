@@ -12,11 +12,13 @@ namespace ui.home
         [SerializeField] Button tutorial;
         [SerializeField] Button settings;
         [SerializeField] Button credits;
+        [SerializeField] Button scoreBoard;
 
         public event Action OnStartButtonClicked;
         public event Action OnTutorialButtonClicked;
         public event Action OnSettingsButtonClicked;
         public event Action OnCreditsButtonClicked;
+        public event Action OnScoreBoardButtonClicked;
 
         private void Start()
         {
@@ -29,6 +31,7 @@ namespace ui.home
             tutorial.onClick.AddListener(() => { OnTutorialButtonClicked?.Invoke(); });
             settings.onClick.AddListener(() => { OnSettingsButtonClicked?.Invoke(); });
             credits.onClick.AddListener(() => { OnCreditsButtonClicked?.Invoke(); });
+            scoreBoard.onClick.AddListener(() => { OnScoreBoardButtonClicked?.Invoke(); });
         }
     }
 }

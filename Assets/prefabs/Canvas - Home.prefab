@@ -1160,6 +1160,7 @@ MonoBehaviour:
   tutorial: {fileID: 8230984544202954801}
   settings: {fileID: 6428470378754966606}
   credits: {fileID: 6611172071035553402}
+  scoreBoard: {fileID: 0}
 --- !u!1 &6020897262563052394
 GameObject:
   m_ObjectHideFlags: 0

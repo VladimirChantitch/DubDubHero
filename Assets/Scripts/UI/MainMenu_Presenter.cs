@@ -1,3 +1,4 @@
+using Realms;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace ui
         [SerializeField] Tutorial_Presenter tutorialPresenter;
         [SerializeField] Settings_Presenter settingsPresenter;
         [SerializeField] Credits_Presenter credits_Presenter;
+        [SerializeField] ScoreBoard_Presenter scoreBoard_Presenter;
         [SerializeField] SelectLevel_Presenter selectLevelPresenter;
 
         private static MainMenu_Presenter instance;
@@ -46,6 +48,7 @@ namespace ui
             tutorialPresenter.gameObject.SetActive(false);
             settingsPresenter.gameObject.SetActive(false);
             credits_Presenter.gameObject.SetActive(false);
+            scoreBoard_Presenter.gameObject.SetActive(false);
             selectLevelPresenter.gameObject.SetActive(false);
         }
 
@@ -67,6 +70,10 @@ namespace ui
                 homePresenter.gameObject.SetActive(false);
                 credits_Presenter.gameObject.SetActive(true);
             };
+            homePresenter.OnScoreBoardButtonClicked += () => {
+                homePresenter.gameObject.SetActive(false);
+                scoreBoard_Presenter.gameObject.SetActive(true);
+            };
         }
 
         private void BindTutorialPresenter()
@@ -85,6 +92,11 @@ namespace ui
             {
                 homePresenter.gameObject.SetActive(true);
                 credits_Presenter.gameObject.SetActive(false);
+            };
+            scoreBoard_Presenter.OnBackPressed += () =>
+            {
+                homePresenter.gameObject.SetActive(true);
+                scoreBoard_Presenter.gameObject.SetActive(false);
             };
 
             selectLevelPresenter.OnBackPressed += () =>
