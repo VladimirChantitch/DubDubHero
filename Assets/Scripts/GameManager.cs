@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
     private void HandleTouchInteraction(Beat beat)
     {
         float score = beat.HitTheBeatAndGetScore();
-        Debug.Log(score);
         _currentScore += score;
         InGame_Presenter.Instance?.SetScore(_currentScore);
 

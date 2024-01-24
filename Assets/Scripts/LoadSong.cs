@@ -31,8 +31,6 @@ public class LoadSong : MonoBehaviour
             string datas = songData.songMap.text;
             List<CSVDatas> donnees = ParserCSVContenu(datas);
 
-            Debug.Log(donnees);
-
             List<string> tambour = new List<string>();
             List<string> cymbal = new List<string>();
             List<string> pocpoc = new List<string>();
@@ -58,14 +56,14 @@ public class LoadSong : MonoBehaviour
             foreach (string tamb in tambour)
             {
                 float tambo = float.Parse(tamb);
-                Vector3 position = new Vector3(-1.5f, 0, -tambo * 10f);
+                Vector3 position = new Vector3(-1.5f, 0, -tambo * 10f + transform.position.z);
                 CreateBeat(BeatRight, position, Board);
             }
 
             foreach (string cym in cymbal)
             {
                 float cymb = float.Parse(cym);
-                Vector3 position = new Vector3(0f, 0, -cymb * 10f);
+                Vector3 position = new Vector3(0f, 0, -cymb * 10f + transform.position.z);
                 CreateBeat(BeatCenter, position, Board);
 
             }
@@ -73,21 +71,26 @@ public class LoadSong : MonoBehaviour
             foreach (string poc in pocpoc)
             {
                 float pocpo = float.Parse(poc);
-                Vector3 position = new Vector3(1.5f, 0, -pocpo * 10f);
+                Vector3 position = new Vector3(1.5f, 0, -pocpo * 10f + transform.position.z);
                 CreateBeat(BeatLeft, position, Board);
 
             }
 
-            TrackManager trackManager = GetComponent<TrackManager>();
+            StartCoroutine(PlaySong(songData));
 
-            audioSource.PlayOneShot(songData.song);
-            Debug.Log(songData.song.length * 10);
-            trackManager.LaunchTrack(songData.song.length * 10);
         }
         else
         {
             Debug.LogError("TextAsset non assigné.");
         }
+    }
+
+    IEnumerator PlaySong(SongData songData)
+    {
+        yield return new WaitForSeconds(1);
+        TrackManager trackManager = GetComponent<TrackManager>();
+        audioSource.PlayOneShot(songData.song);
+        trackManager.LaunchTrack();
     }
 
     private void CreateBeat(GameObject prefab,Vector3 position, GameObject parent)

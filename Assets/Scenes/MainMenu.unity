@@ -849,7 +849,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1740,6 +1740,10 @@ PrefabInstance:
       propertyPath: mainCam
       value: 
       objectReference: {fileID: 1906683753}
+    - target: {fileID: 7551205832484689667, guid: d74baad25b957624c8e86efc280ba956, type: 3}
+      propertyPath: PlaySceneToLoad
+      value: Game
+      objectReference: {fileID: 0}
     - target: {fileID: 8342451925203591977, guid: d74baad25b957624c8e86efc280ba956, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5389242

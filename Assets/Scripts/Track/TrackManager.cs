@@ -8,16 +8,21 @@ namespace Track
 {
     public class TrackManager : MonoBehaviour
     {
-        /// <summary>
-        /// Track speed in meter per second
-        /// </summary>
-        [SerializeField, Tooltip("track speed in meter per second")] float trackSpeed = 10f;
+        bool canMove;
 
-
-        public void LaunchTrack(float trackLenght)
+        public void LaunchTrack()
         {
-            float duration = trackLenght / 10;
-            transform.DOMove(Vector3.forward * trackLenght, duration);
+            canMove = true;
+        }
+
+        private void Update()
+        {
+            if (canMove)
+            {
+                Vector3 motionAmount = transform.position;
+                motionAmount.z += Time.deltaTime * 10;
+                transform.position = motionAmount;
+            }
         }
     }
 }
