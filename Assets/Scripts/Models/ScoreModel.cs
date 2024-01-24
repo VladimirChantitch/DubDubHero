@@ -13,10 +13,8 @@ namespace Assets.Scripts.Models
         public int scoreId { get; set; }
         public string playerName { get; set; }
         public float score { get; set; }
+        private byte[] level_imageBytes { get; set; }
 
-        public ScoreModel()
-        {
-        }
 
         public ScoreModel(int scoreId, string playerName, float score, byte[] level_imageBytes)
         {
@@ -25,11 +23,12 @@ namespace Assets.Scripts.Models
             this.score = score;
             this.level_imageBytes = level_imageBytes;
         }
+        public ScoreModel()
+        {
+        }
 
 
 
-        //Si je veux convertir Un Sprite en byte array je dois => Sprite to Texture2D to byte[]
-        private byte[] level_imageBytes { get; set; }
 
         [Ignore] // Ignorer sauvegarde Realm
         public Sprite level_image
@@ -41,6 +40,17 @@ namespace Assets.Scripts.Models
                     return ConvertByteArrayToSprite(level_imageBytes);
                 }
                 return null;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    level_imageBytes = ConvertSpriteToByteArray(value);
+                }
+                else
+                {
+                    level_imageBytes = null;
+                }
             }
         }
 

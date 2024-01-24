@@ -388,6 +388,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backButton: {fileID: 3955572028542966781}
+  rowPrefab: {fileID: 0}
+  contentTransform: {fileID: 0}
 --- !u!1 &6965818634658033919
 GameObject:
   m_ObjectHideFlags: 0
