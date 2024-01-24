@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
+using Track;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -15,6 +16,8 @@ public class LoadSong : MonoBehaviour
     [SerializeField] private GameObject BeatCenter;
     [SerializeField] private GameObject BeatLeft;
     [SerializeField] private GameObject Board;
+
+    [SerializeField] AudioSource audioSource;
 
 
     // Start is called before the first frame update
@@ -55,14 +58,14 @@ public class LoadSong : MonoBehaviour
             foreach (string tamb in tambour)
             {
                 float tambo = float.Parse(tamb);
-                Vector3 position = new Vector3(-1.5f, 0, -tambo * 20f);
+                Vector3 position = new Vector3(-1.5f, 0, -tambo * 10f);
                 CreateBeat(BeatRight, position, Board);
             }
 
             foreach (string cym in cymbal)
             {
                 float cymb = float.Parse(cym);
-                Vector3 position = new Vector3(0f, 0, -cymb * 20f);
+                Vector3 position = new Vector3(0f, 0, -cymb * 10f);
                 CreateBeat(BeatCenter, position, Board);
 
             }
@@ -70,11 +73,16 @@ public class LoadSong : MonoBehaviour
             foreach (string poc in pocpoc)
             {
                 float pocpo = float.Parse(poc);
-                Vector3 position = new Vector3(1.5f, 0, -pocpo * 20f);
+                Vector3 position = new Vector3(1.5f, 0, -pocpo * 10f);
                 CreateBeat(BeatLeft, position, Board);
 
             }
 
+            TrackManager trackManager = GetComponent<TrackManager>();
+
+            audioSource.PlayOneShot(songData.song);
+            Debug.Log(songData.song.length * 10);
+            trackManager.LaunchTrack(songData.song.length * 10);
         }
         else
         {

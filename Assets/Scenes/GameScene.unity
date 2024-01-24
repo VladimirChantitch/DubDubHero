@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.45141852, g: 0.50062287, b: 0.57076925, a: 1}
+  m_IndirectSpecularColor: {r: 0.44874442, g: 0.4972868, b: 0.5681333, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -555,7 +555,6 @@ GameObject:
   - component: {fileID: 119316915}
   - component: {fileID: 119316914}
   - component: {fileID: 119316913}
-  - component: {fileID: 119316917}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -786,6 +785,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129114678}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &130421671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7038081211886018149, guid: 55fa243623cf3ff47b47d53f360c72ca, type: 3}
+  m_PrefabInstance: {fileID: 485423533}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &179738126
 GameObject:
   m_ObjectHideFlags: 0
@@ -3413,6 +3417,11 @@ MonoBehaviour:
   loader: {fileID: 0}
   trackSpeed: 10
   trackLength: 1500
+--- !u!1 &772104086 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7038081211886018149, guid: 4f221ef045034af498064ed2f0785bc7, type: 3}
+  m_PrefabInstance: {fileID: 320829117}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &773845063
 GameObject:
   m_ObjectHideFlags: 0
@@ -8013,6 +8022,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594f88b549bae0847a73f717d5571487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeatRight: {fileID: 772104086}
+  BeatCenter: {fileID: 1931634370}
+  BeatLeft: {fileID: 130421671}
+  Board: {fileID: 417037391}
 --- !u!4 &1823317349
 Transform:
   m_ObjectHideFlags: 0
@@ -8902,6 +8915,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920884970}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1931634370 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7038081211886018149, guid: a8c522caf45d3c448afddf4c6db46b8d, type: 3}
+  m_PrefabInstance: {fileID: 1090220244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1953716983
 GameObject:
   m_ObjectHideFlags: 0
@@ -9650,3 +9668,4 @@ SceneRoots:
   - {fileID: 119316916}
   - {fileID: 1034857787}
   - {fileID: 1823317349}
+  - {fileID: 1267909457}
