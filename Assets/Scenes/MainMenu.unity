@@ -1456,6 +1456,10 @@ PrefabInstance:
       propertyPath: settingsPresenter
       value: 
       objectReference: {fileID: 357576458}
+    - target: {fileID: 6930062236517930023, guid: d74baad25b957624c8e86efc280ba956, type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 1906683753}
     - target: {fileID: 8342451925203591977, guid: d74baad25b957624c8e86efc280ba956, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5389242
