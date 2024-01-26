@@ -24,11 +24,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""Motion"",
+            ""name"": ""Touch"",
             ""id"": ""d1c00c95-bfd0-4721-809f-a6882d613b32"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
+                    ""name"": ""Touch"",
                     ""type"": ""Value"",
                     ""id"": ""cd444959-5e27-43d2-8854-3840212d68b8"",
                     ""expectedControlType"": ""Vector2"",
@@ -40,67 +40,67 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""f68a421e-d31e-4a03-9478-ac5d7eb355a1"",
-                    ""path"": ""<AndroidJoystick>/stick"",
+                    ""id"": ""e383775b-ce0c-4fcd-b8a9-b67e458b6c5b"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Touch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""0422f69b-4452-488e-b147-e56aedea0d11"",
-                    ""path"": ""2DVector"",
+                    ""name"": """",
+                    ""id"": ""b51c32eb-efaa-4de8-9ef4-b420a50432c1"",
+                    ""path"": ""<Touchscreen>/touch0/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Touch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""722badf0-f971-4054-a598-7711d7b55ec0"",
+                    ""path"": ""<Touchscreen>/touch1/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Touch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Left Mouse Button"",
+                    ""id"": ""ae33d8b9-4ad8-409f-bca9-0ffec0efae48"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Touch"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""c90dd261-facf-4780-92db-44c9a1b52b1f"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""name"": ""modifier"",
+                    ""id"": ""ab52b9e1-0efd-4cb8-b166-70dc623d7d9d"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Touch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""down"",
-                    ""id"": ""4cc3c0d6-1f73-48da-8281-f177a2a9bfed"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""name"": ""binding"",
+                    ""id"": ""be2e3b52-4019-4d8c-bdb8-530ef631119e"",
+                    ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""8b7cecc2-87f4-4ab0-9b69-e62d3dedf3e1"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""0ceb5a6f-ca27-4ee6-8d5a-be90b934e5f2"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Touch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -109,9 +109,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Motion
-        m_Motion = asset.FindActionMap("Motion", throwIfNotFound: true);
-        m_Motion_Move = m_Motion.FindAction("Move", throwIfNotFound: true);
+        // Touch
+        m_Touch = asset.FindActionMap("Touch", throwIfNotFound: true);
+        m_Touch_Touch = m_Touch.FindAction("Touch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -170,53 +170,53 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Motion
-    private readonly InputActionMap m_Motion;
-    private List<IMotionActions> m_MotionActionsCallbackInterfaces = new List<IMotionActions>();
-    private readonly InputAction m_Motion_Move;
-    public struct MotionActions
+    // Touch
+    private readonly InputActionMap m_Touch;
+    private List<ITouchActions> m_TouchActionsCallbackInterfaces = new List<ITouchActions>();
+    private readonly InputAction m_Touch_Touch;
+    public struct TouchActions
     {
         private @PlayerControls m_Wrapper;
-        public MotionActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Motion_Move;
-        public InputActionMap Get() { return m_Wrapper.m_Motion; }
+        public TouchActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Touch => m_Wrapper.m_Touch_Touch;
+        public InputActionMap Get() { return m_Wrapper.m_Touch; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MotionActions set) { return set.Get(); }
-        public void AddCallbacks(IMotionActions instance)
+        public static implicit operator InputActionMap(TouchActions set) { return set.Get(); }
+        public void AddCallbacks(ITouchActions instance)
         {
-            if (instance == null || m_Wrapper.m_MotionActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MotionActionsCallbackInterfaces.Add(instance);
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
+            if (instance == null || m_Wrapper.m_TouchActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_TouchActionsCallbackInterfaces.Add(instance);
+            @Touch.started += instance.OnTouch;
+            @Touch.performed += instance.OnTouch;
+            @Touch.canceled += instance.OnTouch;
         }
 
-        private void UnregisterCallbacks(IMotionActions instance)
+        private void UnregisterCallbacks(ITouchActions instance)
         {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
+            @Touch.started -= instance.OnTouch;
+            @Touch.performed -= instance.OnTouch;
+            @Touch.canceled -= instance.OnTouch;
         }
 
-        public void RemoveCallbacks(IMotionActions instance)
+        public void RemoveCallbacks(ITouchActions instance)
         {
-            if (m_Wrapper.m_MotionActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_TouchActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IMotionActions instance)
+        public void SetCallbacks(ITouchActions instance)
         {
-            foreach (var item in m_Wrapper.m_MotionActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_TouchActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_MotionActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_TouchActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public MotionActions @Motion => new MotionActions(this);
-    public interface IMotionActions
+    public TouchActions @Touch => new TouchActions(this);
+    public interface ITouchActions
     {
-        void OnMove(InputAction.CallbackContext context);
+        void OnTouch(InputAction.CallbackContext context);
     }
 }

@@ -8,25 +8,21 @@ namespace Track
 {
     public class TrackManager : MonoBehaviour
     {
-        [SerializeField] private FloorHandler floorHandler;
-        [SerializeField] private Loader loader;
-        /// <summary>
-        /// Track speed in meter per second
-        /// </summary>
-        [SerializeField, Tooltip("track speed in meter per second")] float trackSpeed = 10f;
-        /// <summary>
-        /// In meters
-        /// </summary>
-        [SerializeField] float trackLength = 1500;
+        bool canMove;
 
-        private void Awake()
+        public void LaunchTrack()
         {
-            if (floorHandler == null) floorHandler = GetComponent<FloorHandler>();
+            canMove = true;
         }
 
-        void Start()
+        private void Update()
         {
-            transform.DOMove(Vector3.forward * trackLength, trackLength / trackSpeed);
+            if (canMove)
+            {
+                Vector3 motionAmount = transform.position;
+                motionAmount.z += Time.deltaTime * 10;
+                transform.position = motionAmount;
+            }
         }
     }
 }

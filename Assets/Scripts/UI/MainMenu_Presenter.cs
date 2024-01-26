@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace ui
 {
-    public class MainMenu_Presenter : MonoBehaviour
+    public class MainMenu_Presenter : MonoBehaviour, IMainPresenter
     {
         [SerializeField] SceneManager sceneManager;
         [SerializeField] Home_Presenter homePresenter;
@@ -19,12 +19,22 @@ namespace ui
         [SerializeField] Credits_Presenter credits_Presenter;
         [SerializeField] SelectLevel_Presenter selectLevelPresenter;
 
+        private static MainMenu_Presenter instance;
+        public static MainMenu_Presenter Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+        private void Awake()
+        {
+            instance = this;
+        }
+
         private void Start()
         {
-            sceneManager.OnSceneLoadingStarted += HandleSceneLoading;
-            sceneManager.OnSceneProgress += HandleSceneProgress;
-            sceneManager.OnSceneLoaded += HandleSceneLoaded;
-
             BindHomePresenter();
             BindTutorialPresenter();
             InitUI();
@@ -84,20 +94,9 @@ namespace ui
             };
         }
 
-        private void HandleSceneLoading(object sender, EventArgs e)
+        public Settings_Presenter GetSettings_Presenter()
         {
-
-        }
-
-        private void HandleSceneProgress(object sender, float e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void HandleSceneLoaded(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+            return settingsPresenter;
         }
     }
-
 }

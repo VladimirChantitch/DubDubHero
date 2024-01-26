@@ -1,7 +1,11 @@
 using data;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using Unity.VisualScripting;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace loader
@@ -9,6 +13,8 @@ namespace loader
     public class Loader : MonoBehaviour
     {
         [SerializeField] List<LoaderData> datas = new List<LoaderData>();
+
+        SongData selectedSong;
         public List<LoaderData> Datas { 
             get {
                 List<LoaderData> a = new List<LoaderData>();
@@ -31,7 +37,56 @@ namespace loader
             songData.songMap = (TextAsset)Resources.Load(data.ResourceName + "-data");
             songData.song = (AudioClip)Resources.Load(data.ResourceName);
 
+            selectedSong = songData;
             return songData;
+        }
+
+        
+        public SongMapData ParseSongMap()
+        {
+            var arrays = ParseCsv(selectedSong.songMap.text);
+
+            SongMapData songMapData = new SongMapData(arrays.Item1, arrays.Item2, arrays.Item3);
+
+            return null;
+        }
+
+        static Tuple<float[], float[], float[]> ParseCsv(string csvData)
+        {
+            List<float> tambourList = new List<float>();
+            List<float> cymbalList = new List<float>();
+            List<float> pocpocList = new List<float>();
+
+            string[] lines = csvData.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (var line in lines.Skip(1)) 
+            {
+                string[] values = line.Split("\",\"");
+
+                float tambourValue, cymbalValue, pocpocValue;
+
+                if (float.TryParse(values[0].Trim('"'), out tambourValue) &&
+                    float.TryParse(values[1].Trim('"'), out cymbalValue) &&
+                    float.TryParse(values[2].Trim('"'), out pocpocValue))
+                {
+                    tambourList.Add(tambourValue);
+                    cymbalList.Add(cymbalValue);
+                    pocpocList.Add(pocpocValue);
+                }
+                else
+                {
+                    Console.WriteLine("Error parsing line: " + line);
+                }
+            }
+
+            return Tuple.Create(tambourList.ToArray(), cymbalList.ToArray(), pocpocList.ToArray());
+        }
+
+        [ContextMenu("Test parse data")]
+        public void TestParseData()
+        {
+            GetSongById(0);
+            ParseSongMap();
         }
     }
 }

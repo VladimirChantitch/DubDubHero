@@ -14,13 +14,22 @@ public class SceneManager : MonoBehaviour
     bool _isSceneLoaded = true;
     AsyncOperation loadingOp;
 
-    public void LoadScene(string sceneName)
+    public void LoadScene(string sceneName, bool isAdditive = false)
     {
         if (_isSceneLoaded)
         {
             _isSceneLoaded = false;
-            loadingOp = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName,
-                                                    UnityEngine.SceneManagement.LoadSceneMode.Single);
+            if (isAdditive)
+            {
+                loadingOp = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName,
+                                        UnityEngine.SceneManagement.LoadSceneMode.Additive);
+            }
+            else
+            {
+                loadingOp = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName,
+                                        UnityEngine.SceneManagement.LoadSceneMode.Single);
+            }
+
             loadingOp.allowSceneActivation = false;
         }
     }
